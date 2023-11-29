@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineFavorite, MdRestartAlt } from "react-icons/md";
 import { CiHeart } from 'react-icons/ci';
 import DataContext from '../../../context';
+import {Toaster,toast} from 'react-hot-toast';
 
 function Card({ item }) {
   const { basketItems, setBasketItems,data,setData } = useContext(DataContext);
@@ -17,6 +18,8 @@ function Card({ item }) {
       item.count += 1;
       setBasketItems([...basketItems.filter(basketItem => basketItem.id !== item.id), item]);
     }
+    toast.success("əlavə edildi")
+
   };
 
   useEffect(() => {
@@ -42,7 +45,10 @@ function Card({ item }) {
           <MdOutlineFavorite />
           <button onClick={()=>handleBasket(item)} className='favo'>Add</button>
         </div>
+  
       </div>
+      <Toaster/>
+ 
     </div>
   );
 }

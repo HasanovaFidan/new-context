@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DataContexs from '../../../context';
 import "./table.css"
+import {Toaster,toast} from 'react-hot-toast';
 
 
 function Fav() {
@@ -36,6 +37,7 @@ function Fav() {
 
  const handleDelete=(id)=>{
 setBasketItems(basketItems.filter(item=>item.id!==id))
+toast.error("silindi")
  }
   useEffect(() => {
     let sum = 0;
@@ -79,6 +81,7 @@ setBasketItems(basketItems.filter(item=>item.id!==id))
       <div className='td'>
         {basketItems.reduce((total,item)=>total+item.count*item.price,0)}
       </div>
+      <Toaster/>
     </div>
   );
 }
